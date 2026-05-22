@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G1追加オプション｜VOTEC 営業ガイド</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">VOTEC</div>
+  <p class="catch">風俗・メンズエステのホームページ制作なら 全国対応</p>
+</header>
+
+<div id="imgModal" class="img-modal" onclick="closeModal()">
+  <div class="img-modal-inner" onclick="event.stopPropagation()">
+    <button class="img-modal-close" onclick="closeModal()">×</button>
+    <img id="imgModalSrc" src="" alt="">
+    <div class="img-modal-body">
+      <h3 id="imgModalTitle"></h3>
+      <p id="imgModalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+.option-item dd.opt-price-line { font-size: 13px; color: #002f5a; font-weight: bold; margin-top: 2px; }
+.option-item--has-img {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.option-item-body { flex: 1; }
+.option-sample-img {
+  flex-shrink: 0;
+  max-height: 70px;
+  width: auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.option-sample-img:hover { opacity: 0.8; }
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 16px;
+}
+.img-modal.open { display: flex; }
+.img-modal-inner {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  width: min(750px, 92vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  cursor: default;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.img-modal-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px 8px 0 0;
+}
+.img-modal-body {
+  padding: 16px 20px 20px;
+}
+.img-modal-body h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #002f5a;
+  border-left: 4px solid #002f5a;
+  padding-left: 8px;
+  margin: 0 0 10px;
+}
+.img-modal-body p {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  margin: 0;
+}
+.img-modal-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.35);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.img-modal-close:hover { background: rgba(0,0,0,0.6); }
+</style>
+
+<script>
+function openModal(img) {
+  event.stopPropagation();
+  document.getElementById('imgModalSrc').src = img.src;
+  document.getElementById('imgModalTitle').textContent = img.dataset.title || '';
+  document.getElementById('imgModalDesc').textContent = img.dataset.desc || '';
+  document.getElementById('imgModal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('imgModal').classList.remove('open');
+}
+</script>
+
+<nav class="main-nav no-print">
+  <a href="index.html">ホーム</a>
+  <a href="pricing.html">料金プラン</a>
+  <a href="options.html" class="active">G1追加オプション</a>
+  <a href="flow.html">制作の流れ</a>
+  <a href="faq.html">よくある質問</a>
+  <!--<a href="features.html">機能一覧</a>-->
+  <a href="campaign.html">キャンペーン</a>
+  <a href="template-sizes.html">テンプレートサイズ</a>
+</nav>
+
+<section>
+  <h2>■ G1追加オプション</h2>
+  <p style="font-size:13px;">公式サイト（<a href="https://votec.jp/votec-option" target="_blank" class="text-link">votec.jp/votec-option</a>）掲載のオプション一覧です。金額はすべて税込です。</p>
+  <dl class="option-grid">
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>女性プロフィールの遷移先変更</dt>
+        <dd>女性パネルの遷移先を別サイト（媒体）に変更可能に</dd>
+        <dd class="opt-price-line">0円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="女性プロフィールの遷移先変更"
+        data-desc="【概要】女性パネルの遷移先を別サイト（媒体）に変更できる機能です。
+【機能】プロフィールページへの遷移は、駅ちか・デリヘルタウンのスコア加点項目です。この要件を満たすことで、各媒体の評価を向上させることができます。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>出勤情報の日数変更</dt>
+        <dd>出勤表の表示期間を1週間／2週間／3週間から選択</dd>
+        <dd class="opt-price-line">0円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="出勤情報の日数変更"
+        data-desc="【概要】出勤情報の日数表示を通常の1週間から【2週間】もしくは【3週間】に変更できる機能です。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>Google翻訳埋め込み</dt>
+        <dd>Google自動翻訳でサイト内テキストを多言語表示（韓国語・英語・中国語など）</dd>
+        <dd class="opt-price-line">5,500円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="Google翻訳埋め込み"
+        data-desc="Googleの自動翻訳機能を埋め込みます。言語の切り替えでサイト内のテキストを自動翻訳できるので、店舗様での翻訳作業は不要！
+【対応言語】韓国語・英語・中国語（簡体）・中国語（繫体）">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>ローディング時にロゴ表示</dt>
+        <dd>TOP読み込み中に店舗ロゴを表示しブランド感を演出</dd>
+        <dd class="opt-price-line">5,500円</dd>
+      </div>
+      <img src="img/sample_g1_01.gif" alt="サンプル表示" class="option-sample-img" onclick="openModal(this)"
+        data-title="ローディング時にロゴ表示"
+        data-desc="TOPページのローディング時に店舗のロゴを表示することで、おしゃれかつ高級感を演出することができます。サイト全体の雰囲気が上品になり、競合他社と差別化することが可能です。ユーザーの期待感を高め、サイトへの関心を一層引き出すことができます。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>スマホ版全画面画像作成（リサイズ）</dt>
+        <dd>スマホでメインビジュアルをフルスクリーン表示（推奨）</dd>
+        <dd class="opt-price-line">5,500円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="スマホ版全画面画像作成（リサイズ）"
+        data-desc="スマホ版メインビジュアルをフルスクリーンサイズで表示させ、視覚的な魅力を高めます。どのデバイスからも一貫したブランドイメージを発信できます。お客様のニーズに合わせた最適なメインビジュアルで、サイトをさらに魅力的に演出します。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>背景エフェクト</dt>
+        <dd>背景に演出エフェクトを追加</dd>
+        <dd class="opt-price-line">5,500円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="背景エフェクト"
+        data-desc="サイトの背景に動きを加える機能で魅力的なウェブサイトを実現！静止した背景ではなく、動きのある背景を取り入れることで、サイト全体の雰囲気が一変します。
+※要望によっては追加費用が発生する場合がございます
+※背景画像の作成は含まれていません。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>オリジナル背景画像</dt>
+        <dd>店舗イメージに合わせたオリジナル背景画像を制作</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="オリジナル背景画像"
+        data-desc="オリジナル背景画像であなたのサイトを唯一無二の存在に！サイトの個性を際立たせ、ブランドイメージを強化することができます。オリジナル背景画像サービスを利用して、他にはないユニークなウェブサイトを作りませんか？">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>各言語ページ追加【3言語まで】</dt>
+        <dd>言語ごとに専用ページを追加（最大3言語）</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="各言語ページ追加【3言語まで】"
+        data-desc="言語ごとに1ページで利用料金やコンセプトなどを簡潔にまとめたページです。
+※最大3言語（3ページ）まで
+【4言語目以降は1言語追加に付き +¥11,000】
+・ページの内容は店舗様でご用意いただく必要がございます
+・管理画面からの編集は不可">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>出勤ルーム振り分け機能</dt>
+        <dd>出勤情報をルーム別に表示・振り分け</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="出勤ルーム振り分け機能"
+        data-desc="【概要】ルームが2つ以上ある場合、どのルームへ出勤するのか表示できます。
+【機能】出勤するキャストにルームのステータスを付与し振り分けることができます。また、ルーム別で絞り込みが可能です。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>パネル写真の枚数変更（5枚→10枚）</dt>
+        <dd>在籍パネルの写真表示枚数を拡張</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="パネル写真の枚数変更（5枚→10枚）"
+        data-desc="プロフィールページの写真を通常の5枚から10枚に増やせるようになります。写真枚数が多いと、実際のキャストの姿を確認できるため、お客様に安心感を与えることができます。特に初めてのお客様にとっては、実際にどのようなキャストが在籍しているのかを事前に確認できることは大きな安心材料となります。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>在籍パネルにX設置</dt>
+        <dd>X（旧Twitter）へのリンクをパネルに設置</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="在籍パネルにX設置"
+        data-desc="女性パネル上に「Xアイコン」と女性プロフィール内に「Xウィジェット」が設置できる機能です。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>在籍パネルにBluesky設置</dt>
+        <dd>Blueskyへのリンクをパネルに設置</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="在籍パネルにBluesky設置"
+        data-desc="パネル写真にBlueskyアイコンを追加！アイコンをクリックするだけで、ユーザーがキャストのBlueskyプロフィールに簡単にアクセスできるようになります。アカウントが凍結されやすいX（旧Twitter）に代わるSNSです。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>在籍パネルにInstagram設置</dt>
+        <dd>Instagramへのリンクをパネルに設置</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="在籍パネルにInstagram設置"
+        data-desc="女性パネル上に「Instagramアイコン」と女性プロフィール内に「Instagramウィジェット」が設置できる機能です。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>在籍パネルに01/02設置</dt>
+        <dd>01/02へのリンクをパネルに設置</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="在籍パネルに01/02設置"
+        data-desc="パネル写真に今話題のキャスト専用SNSアイコンを設置可能になりました。
+01（ゼロワン）…風俗キャスト専用SNS
+02（ゼロツー）…メンズエステキャスト専用SNS">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>動画設置機能</dt>
+        <dd>プロフィール等に動画を埋め込み表示</dd>
+        <dd class="opt-price-line">11,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="動画設置機能"
+        data-desc="プロフィールページに動画の設置ができる機能です。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>ピックアップの表示方法変更</dt>
+        <dd>ピックアップ枠の表示レイアウトを変更</dd>
+        <dd class="opt-price-line">16,500円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="ピックアップの表示方法変更"
+        data-desc="トップページのピックアップキャストを通常の1名表示からスライド形式で複数名表示できる機能です。
+※複数名ピックアップキャストがいる場合は、通常ランダムで1名表示
+全てのピックアップキャストを表示することができ、一定の時間ごとに自動的に次のキャストが表示されます。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>予約満了ステータス表示機能</dt>
+        <dd>予約状況を満了などのステータスで表示</dd>
+        <dd class="opt-price-line">16,500円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="予約満了ステータス表示機能"
+        data-desc="予約状況を一目で確認！スムーズな予約管理を実現するステータス表示機能。予約満了ステータス表示機能を導入することで、予約の空き状況を簡単に確認でき、無駄な問い合わせを減らすことができます。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>WEB予約ページ（フォーム）追加</dt>
+        <dd>予約用フォームページを追加</dd>
+        <dd class="opt-price-line">22,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="WEB予約ページ（フォーム）追加"
+        data-desc="WEB予約ページ（フォーム）を追加して顧客の利便性を向上！WEB予約フォームを利用することで、お客様は24時間いつでも予約を簡単に行うことができます。スムーズな予約体験を提供し、顧客満足度を向上させましょう！">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>ホームページの多言語化</dt>
+        <dd>サイト全体の多言語対応（人手による多言語ページ制作）</dd>
+        <dd class="opt-price-line">22,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="ホームページの多言語化"
+        data-desc="ホームページに英語、中国語、韓国語、ベトナム語など管理画面で自由に設定可能です（3言語目まで）。4言語目から1言語追加につき11,000円です（最大10言語まで追加可能）。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>新人ページ追加</dt>
+        <dd>新人紹介用ページを追加</dd>
+        <dd class="opt-price-line">22,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="新人ページ追加"
+        data-desc="TOPページの中に項目が追加されます。また新しく新人ページが追加されます。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>リアルタイム出勤機能</dt>
+        <dd>出勤情報をリアルタイムで更新表示</dd>
+        <dd class="opt-price-line">33,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="リアルタイム出勤機能"
+        data-desc="待機しているキャストをリアルタイムでご案内できるシステムです。
+・即時案内：「今すぐご案内可能」な女の子を表示
+・時間指定案内：「16:30からご案内可能」など分刻みで案内
+・ステータス：「予約完売」「待機中」など現在の状態を表示">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>動画一覧ページ</dt>
+        <dd>動画を一覧で閲覧できるページを追加</dd>
+        <dd class="opt-price-line">33,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="動画一覧ページ"
+        data-desc="【動画一覧ページ（新規追加ページ）】女性ごとの動画を一覧で見ることができます。各女性の動画を簡単に見つけられ、一覧で視聴できます。
+【プロフィールページ連携】各女性のプロフィールページに動画を登録でき、登録された動画は動画一覧ページにも自動的に表示されます。">
+    </div>
+    <div class="option-item option-item--has-img">
+      <div class="option-item-body">
+        <dt>口コミ機能</dt>
+        <dd>口コミの投稿・表示機能</dd>
+        <dd class="opt-price-line">44,000円</dd>
+      </div>
+      <img src="img/placeholder.jpg" alt="サンプル" class="option-sample-img" onclick="openModal(this)"
+        data-title="口コミ機能"
+        data-desc="口コミの投稿・閲覧ができる機能です。お客様からの口コミを蓄積することで、店舗の信頼性向上や新規集客につなげることができます。管理画面から口コミの承認・非承認も管理可能です。">
+    </div>
+  </dl>
+  <p style="margin-top:12px;"><a href="https://votec.jp/votec-option" target="_blank" class="text-link">オプション一覧を見る（公式サイト）</a></p>
+</section>
+
+<section class="contact-box">
+  <h2>お問い合わせ</h2>
+  <p class="tel"><a href="tel:0570-666-091">0570-666-091</a></p>
+  <p>担当直通：<a href="tel:080-9815-6852">080-9815-6852</a></p>
+  <p class="time">受付時間：平日 11:00～19:00（土日祝休）</p>
+  <p style="margin-top:12px;font-size:12px;"><a href="https://votec.jp" target="_blank">https://votec.jp</a></p>
+</section>
+
+</body>
+</html>

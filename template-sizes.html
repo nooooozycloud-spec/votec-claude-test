@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>各種テンプレートサイズ表｜VOTEC 営業ガイド</title>
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .ts-section { margin: 32px 0 24px; }
+    .ts-section > h3 {
+      background: #002f5a;
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 15px;
+      margin: 0 0 12px;
+    }
+    .ts-block { margin: 18px 0 24px; }
+    .ts-block h4 {
+      font-size: 26px;
+      margin: 0 0 8px;
+      padding: 6px 10px;
+      border-left: 4px solid #002f5a;
+      background: #f3f6fb;
+    }
+    .ts-cat {
+      font-size: 12px;
+      font-weight: bold;
+      color: #002f5a;
+      margin: 12px 0 4px;
+    }
+    .ts-cat.paid {
+      color: #b34700;
+    }
+    .ts-cat.paid::before {
+      content: "▼有料制作　";
+      color: #b34700;
+    }
+    .ts-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 4px 0 8px;
+      font-size: 12px;
+      table-layout: fixed;
+    }
+    .ts-table th, .ts-table td {
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+      word-break: break-all;
+    }
+    .ts-table th {
+      background: #f0f0f0;
+      font-weight: bold;
+    }
+    .ts-table col.col-label  { width: 28%; }
+    .ts-table col.col-device { width: 10%; }
+    .ts-table col.col-size   { width: 22%; }
+    .ts-table col.col-file   { width: 40%; }
+    .ts-table .size { font-weight: bold; color: #002f5a; }
+    .ts-table .file { font-family: Consolas, monospace; font-size: 11px; color: #555; }
+    .ts-note {
+      font-size: 11px;
+      color: #666;
+      margin: 4px 0 0;
+      line-height: 1.6;
+    }
+    .ts-templates {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      padding: 8px 12px;
+      margin: 8px 0 0;
+      font-size: 12px;
+    }
+    .ts-templates strong { display: block; margin-bottom: 4px; color: #002f5a; }
+    .ts-templates ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+    .ts-templates li::before { content: "・"; color: #999; }
+    .ts-supplement {
+      font-size: 11px;
+      color: #666;
+      background: #fff8e6;
+      border: 1px solid #e6d9b3;
+      padding: 8px 12px;
+      margin: 8px 0 0;
+      line-height: 1.7;
+    }
+    .ts-supplement strong { color: #b34700; }
+    .ts-selector .ts-supplement {
+      margin: 0 0 8px;
+    }
+    .ts-intro {
+      background: #f3f6fb;
+      border-left: 4px solid #002f5a;
+      padding: 10px 14px;
+      margin: 12px 0 20px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .ts-quicknav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px auto 20px;
+      width: 80%;
+    }
+    .ts-quicknav a {
+      flex: 1 1 auto;
+      text-align: center;
+      background: #00978E;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 24px;
+    }
+    .ts-quicknav a:hover { opacity: 0.9; }
+    .ts-selector {
+      background: #f3f6fb;
+      border: 1px solid #c5d4e8;
+      padding: 16px;
+      margin: 16px 0 24px;
+    }
+    .ts-selector label,
+    .ts-filter-label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      color: #002f5a;
+      margin-bottom: 8px;
+    }
+    .ts-filter-row { margin-bottom: 16px; }
+    .ts-category-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .ts-category-btns button {
+      flex: 1 1 auto;
+      min-width: 80px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid #00978E;
+      border-radius: 24px;
+      background: #fff;
+      color: #00978E;
+      cursor: pointer;
+    }
+    .ts-category-btns button:hover { background: #e8f7f6; }
+    .ts-category-btns button.active {
+      background: #00978E;
+      color: #fff;
+    }
+    .ts-dropdown-row {
+      margin-bottom: 16px;
+    }
+    .ts-dropdown-row.is-hidden { display: none; }
+    .ts-dropdown-row select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #fff;
+    }
+    .ts-or-divider {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin: 0 0 12px;
+    }
+    .ts-or-divider.is-hidden { display: none; }
+    .ts-search-wrap {
+      position: relative;
+    }
+    .ts-search-wrap input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #fff;
+    }
+    .ts-search-hint {
+      font-size: 11px;
+      color: #666;
+      margin: 6px 0 0;
+    }
+    .ts-suggest {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 0;
+      max-height: 280px;
+      overflow-y: auto;
+      background: #fff;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .ts-suggest.is-open { display: block; }
+    .ts-suggest li {
+      padding: 10px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+    .ts-suggest li:last-child { border-bottom: none; }
+    .ts-suggest li:hover,
+    .ts-suggest li.is-active { background: #e8f7f6; }
+    .ts-suggest li .ts-suggest-cat {
+      display: block;
+      font-size: 10px;
+      color: #888;
+      margin-bottom: 2px;
+    }
+    .ts-suggest li mark {
+      background: #fff3a0;
+      color: inherit;
+      padding: 0 1px;
+    }
+    .ts-suggest-empty {
+      padding: 12px;
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+    }
+    .ts-selected-name {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #002f5a;
+    }
+    .ts-selected-name strong { font-size: 15px; }
+    .ts-empty {
+      text-align: center;
+      padding: 40px 16px;
+      color: #888;
+      font-size: 14px;
+      background: #fafafa;
+      border: 1px dashed #ddd;
+      margin: 16px 0;
+    }
+    .ts-section.is-hidden,
+    .ts-block.is-hidden { display: none; }
+    .ts-templates { display: none; }
+    @media print {
+      .ts-selector, .ts-empty { display: none !important; }
+      .ts-section, .ts-block { display: block !important; }
+      .ts-templates { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">VOTEC</div>
+  <p class="catch">風俗・メンズエステのホームページ制作なら 全国対応</p>
+</header>
+
+<nav class="main-nav no-print">
+  <a href="index.html">ホーム</a>
+  <a href="pricing.html">料金プラン</a>
+  <a href="options.html">G1追加オプション</a>
+  <a href="flow.html">制作の流れ</a>
+  <a href="faq.html">よくある質問</a>
+  <!--<a href="features.html">機能一覧</a>-->
+  <a href="campaign.html">キャンペーン</a>
+  <a href="template-sizes.html" class="active">テンプレートサイズ</a>
+</nav>
+
+<section>
+  <h2>■ 各種テンプレートサイズ表</h2>
+<!--
+  <div class="ts-intro">
+    <strong>G1とH1テンプレートの違い（読み：ジーワン・エイチワン）</strong><br>
+    【G1】2025年2月までに販売されたテンプレート<br>
+    【H1】2025年2月以降に販売開始したテンプレート<br>
+    ※いずれもレスポンシブ対応<br>
+    <span style="font-size:12px;color:#666;">※テンプレート名をページ内検索（Ctrl＋F）し、サイズを確認してください。</span>
+  </div>
+-->
+  <div class="ts-selector no-print">
+    <div class="ts-filter-row">
+      <span class="ts-filter-label">業種で絞り込み</span>
+      <div class="ts-category-btns">
+        <button type="button" class="active" data-category="">すべて</button>
+        <button type="button" data-category="fuuzoku">風俗版</button>
+        <button type="button" data-category="menesthe">メンエス版</button>
+        <button type="button" data-category="nightwork">ナイトワーク版</button>
+      </div>
+    </div>
+    <div id="ts-dropdown-row" class="ts-dropdown-row is-hidden">
+      <label for="ts-template-select">一覧から選択</label>
+      <select id="ts-template-select">
+        <option value="">-- テンプレートを選択 --</option>
+      </select>
+    </div>
+    <p id="ts-or-divider" class="ts-or-divider is-hidden">または</p>
+    <label for="ts-search">テンプレート名で検索</label>
+    <p class="ts-supplement">申し込み時に送っていただいた、ヒアリングシート記載のテンプレート名を入力してください。</p>
+    <div class="ts-search-wrap">
+      <input type="text" id="ts-search" placeholder="テンプレート名を入力してください" autocomplete="off">
+      <ul id="ts-suggest" class="ts-suggest"></ul>
+    </div>
+    <!--<p class="ts-search-hint">① 業種ボタンで絞り込み → ② テンプレート名を入力して候補から選択（Enterで先頭候補を選択）</p>-->
+    <p id="ts-selected-name" class="ts-selected-name" style="display:none;">選択中：<strong></strong></p>
+  </div>
+
+  <p id="ts-empty" class="ts-empty no-print">業種を選び、一覧または検索からテンプレートを選択するとサイズ一覧が表示されます。</p>
+
+  <div id="ts-content">
+  <!-- ================================ -->
+  <!-- 風俗版                            -->
+  <!-- ================================ -->
+  <div id="fuuzoku" class="ts-section is-hidden">
+    <h3>◆ 風俗版テンプレート</h3>
+
+    <!-- 風俗版 H1 -->
+    <div id="block-fk-h1" class="ts-block is-hidden">
+      <h4>【風俗版】G1テンプレート各種サイズ（レスポンシブ）</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（H1）</strong>
+        <ul>
+          <li>G1-FKブラック01（H1）</li>
+          <li>G1-FKホワイト01（H1）</li>
+          <li>G1-FKパープル01（H1）</li>
+          <li>G1-FKピンク01（H1）</li>
+          <li>G1-FKレッド01（H1）</li>
+          <li>G1-FKブルー01（H1）</li>
+          <li>G1-FKパープル02（H1）</li>
+          <li>G1-FKエメラルドブルー01（H1）</li>
+          <li>G1-FKゴールド01（H1）</li>
+          <li>G1-FKピンク02（H1）</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【認証画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証画像</td><td>PC</td><td class="size">1920×600px</td><td class="file">pc_index.jpg</td></tr>
+        <tr><td>認証画像</td><td>SP</td><td class="size">750×550px</td><td class="file">sp_index.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat">【ロゴ】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>headerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>footerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">footer_logo.png</td></tr>
+      </table>
+      <p class="ts-note">↑footerはheaderの流用でOK（footer背景と同化しないデザインで制作）</p>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【特大バナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大バナー</td><td>PC</td><td class="size">1920×800px</td><td class="file">自由（例：pc_top.jpg）</td></tr>
+        <tr><td>特大バナー</td><td>SP</td><td class="size">750×550px</td><td class="file">自由（例：sp_top.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【スライドバナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>スライドバナー</td><td>PC/SP</td><td class="size">950×360px（推奨）</td><td class="file">自由（例：slide01.jpg）</td></tr>
+      </table>
+    </div>
+
+    <!-- 風俗版 G1（SHシリーズ） -->
+    <div id="block-sh" class="ts-block is-hidden">
+      <h4>【風俗版】G1テンプレート各種サイズ（SHシリーズ）</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（G1 SHシリーズ）</strong>
+        <ul>
+          <li>G1-紺SH01</li>
+          <li>G1-茶SH01</li>
+          <li>G1-黒SH01</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【PC】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証背景</td><td>PC</td><td class="size">1920×670px</td><td class="file">bg_index.jpg</td></tr>
+        <tr><td>header画像（TOP・下層）</td><td>PC</td><td class="size">1920×220px</td><td class="file">bg_header.png</td></tr>
+        <tr><td>読み込みロゴ</td><td>PC</td><td class="size">600×600px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>認証ロゴ</td><td>PC</td><td class="size">850×400px</td><td class="file">index_shop.png</td></tr>
+      </table>
+
+      <p class="ts-cat">【SP】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証</td><td>SP</td><td class="size">856×856px</td><td class="file">sp_bg_index.jpg</td></tr>
+        <tr><td>header画像（TOP・下層）</td><td>SP</td><td class="size">856×300px</td><td class="file">sp_header.png</td></tr>
+      </table>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【特大バナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大バナー</td><td>PC/SP</td><td class="size">1920×800px</td><td class="file">自由（例：top_bnr.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【スライドバナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>スライドバナー</td><td>PC/SP</td><td class="size">1000×315px</td><td class="file">自由（例：slide01.jpg）</td></tr>
+      </table>
+    </div>
+
+    <!-- 風俗版 認証プラン -->
+    <div id="block-auth" class="ts-block is-hidden">
+      <h4>【風俗版】認証プラン</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（認証プラン）</strong>
+        <ul>
+          <li>認証-白01</li>
+          <li>認証-黒01</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【認証画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証画像</td><td>PC</td><td class="size">1920×670px</td><td class="file">bg_index.jpg</td></tr>
+        <tr><td>認証画像</td><td>SP</td><td class="size">850×850px</td><td class="file">sp_bg_index.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-note">※認証プランでは、ロゴのみ制作すればOKです（サイズは自由）。過去制作の画像を使用し、店舗ロゴへ差し替えてください。</p>
+    </div>
+
+    <!-- 風俗版 G1（Bシリーズ） -->
+    <div id="block-b" class="ts-block is-hidden">
+      <h4>【風俗版】G1テンプレート各種サイズ（Bシリーズ）</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（G1 Bシリーズ）</strong>
+        <ul>
+          <li>G1-青03B</li>
+          <li>G1-金01B</li>
+          <li>G1-白05B</li>
+          <li>G1-ピンク04B</li>
+          <li>G1-緑02B</li>
+          <li>G1-青02B</li>
+          <li>G1-ピンク03B</li>
+          <li>G1-白04B</li>
+          <li>G1-黒03B</li>
+          <li>G1-白03B</li>
+          <li>G1-赤02B</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【PC】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証背景</td><td>PC</td><td class="size">1920×1080px</td><td class="file">bg_index.jpg</td></tr>
+        <tr><td>header画像（TOP・下層）</td><td>PC</td><td class="size">1920×440px</td><td class="file">pc_header.png</td></tr>
+        <tr><td>読み込みロゴ</td><td>PC</td><td class="size">600×600px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>認証ロゴ</td><td>PC</td><td class="size">850×400px</td><td class="file">index_shop.png</td></tr>
+      </table>
+
+      <p class="ts-cat">【SP】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証 / header画像（TOPのみ）</td><td>SP</td><td class="size">856×856px</td><td class="file">sp_main.jpg</td></tr>
+        <tr><td>header画像（下層）</td><td>SP</td><td class="size">856×250px</td><td class="file">sp_header.png</td></tr>
+      </table>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【特大バナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大バナー</td><td>PC/SP</td><td class="size">874×341px</td><td class="file">自由（例：top_bnr.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【スライドバナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>スライドバナー</td><td>PC/SP</td><td class="size">673×212px</td><td class="file">自由（例：slide01.jpg）</td></tr>
+      </table>
+    </div>
+
+    <!-- 風俗版 G1（SIシリーズ） -->
+    <div id="block-si" class="ts-block is-hidden">
+      <h4>【風俗版】G1テンプレート各種サイズ（SIシリーズ）</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（G1 SIシリーズ）</strong>
+        <ul>
+          <li>G1-黒SI01</li>
+          <li>G1-赤SI01</li>
+          <li>G1-金SI01</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【PC】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証背景</td><td>PC</td><td class="size">1920×670px</td><td class="file">bg_index.jpg</td></tr>
+        <tr><td>header画像（TOP・下層）</td><td>PC</td><td class="size">1920×255px</td><td class="file">bg_header.png</td></tr>
+        <tr><td>読み込みロゴ</td><td>PC</td><td class="size">600×600px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>認証ロゴ</td><td>PC</td><td class="size">850×400px</td><td class="file">index_shop.png</td></tr>
+      </table>
+
+      <p class="ts-cat">【SP】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証</td><td>SP</td><td class="size">856×856px</td><td class="file">sp_main.jpg</td></tr>
+        <tr><td>header画像（TOP・下層）</td><td>SP</td><td class="size">856×300px</td><td class="file">sp_header.png</td></tr>
+      </table>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【特大バナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大バナー</td><td>PC/SP</td><td class="size">1920×800px</td><td class="file">自由（例：top_bnr.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【スライドバナー】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>スライドバナー</td><td>PC/SP</td><td class="size">1000×315px</td><td class="file">自由（例：slide01.jpg）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- メンエス版                        -->
+  <!-- ================================ -->
+  <div id="menesthe" class="ts-section is-hidden">
+    <h3>◆ メンエス版テンプレート</h3>
+
+    <!-- メンエス版 G1 -->
+    <div id="block-me-g1" class="ts-block is-hidden">
+      <h4>【メンエス版】G1テンプレート各種サイズ</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（G1）</strong>
+        <ul>
+          <li>G1-ME2ネイビー</li>
+          <li>G1-ME2ピンク</li>
+          <li>G1-ME2チャコール</li>
+          <li>G1-ME2グラデーション（ピンク・オレンジ）</li>
+          <li>G1-ME2グラデーション（パープル・ブルー）</li>
+          <li>G1-ME2モスグリーン</li>
+          <li>G1-ME2ブラック＆ゴールド</li>
+          <li>G1-ME2ブラウン＆レッド</li>
+          <li>G1-ME2シルバー＆レッド</li>
+          <li>G1-ME2ホワイト＆ゴールド</li>
+          <li>G1-ME2ホワイト＆ラベンダー</li>
+          <li>G1-ME2ホワイト＆ブルー</li>
+          <li>G1-ME2ブラック&オレンジ</li>
+          <li>G1-ME2ホワイト&ブラック</li>
+          <li>G1-ME2ホワイト&レッド</li>
+          <li>G1-ME2ホワイト&ターコイズ</li>
+          <li>G1-ME2ホワイト&プリズム</li>
+          <li>G1-ME2ブラック&サイバー</li>
+          <li>G1-ME2ホワイト＆ピンク</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【特大画像】 ※設置場所は「スライドバナー編集」</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大画像</td><td>PC</td><td class="size">1920×800px</td><td class="file">自由（例：pc_top.jpg）</td></tr>
+        <tr><td>特大画像</td><td>SP</td><td class="size">750×550px</td><td class="file">自由（例：sp_top.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat">【ロゴ】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>headerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>footerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">footer_logo.png</td></tr>
+      </table>
+      <p class="ts-note">↑footerはheaderの流用（背景と同化しないように）</p>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【認証画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証画像</td><td>PC</td><td class="size">1920×670px</td><td class="file">bg_index.jpg</td></tr>
+        <tr><td>認証画像</td><td>SP</td><td class="size">850×850px</td><td class="file">sp_bg.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【背景画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>背景画像</td><td>PC</td><td class="size">1920×1080px</td><td class="file">bg.jpg</td></tr>
+        <tr><td>背景画像</td><td>SP</td><td class="size">1206×2622px</td><td class="file">bg_sp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【SPフルビジュアル】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>SPフルビジュアル</td><td>SP</td><td class="size">750×1400px</td><td class="file">自由（例：sp_top.jpg）／認証設置の場合：sp_index.jpg</td></tr>
+      </table>
+    </div>
+
+    <!-- メンエス版 H1 -->
+    <div id="block-me-h1" class="ts-block is-hidden">
+      <h4>【メンエス版】H1テンプレート各種サイズ</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（H1）</strong>
+        <ul>
+          <li>G1-MEエメラルドブルー01</li>
+          <li>G1-MEピンク02</li>
+          <li>G1-MEゴールド01</li>
+          <li>G1-MEホワイト01</li>
+          <li>G1-MEブルー02</li>
+          <li>G1-MEブラウン01</li>
+          <li>G1-MEパープル02</li>
+          <li>G1-MEブルー01</li>
+          <li>G1-MEレッド01</li>
+          <li>G1-MEピンク01</li>
+          <li>G1-MEブルー03</li>
+          <li>G1-MEパープル03</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【特大画像】 ※設置場所は「特大バナー編集」</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大画像</td><td>PC</td><td class="size">1920×800px</td><td class="file">自由（例：pc_top.jpg）</td></tr>
+        <tr><td>特大画像</td><td>SP</td><td class="size">750×550px</td><td class="file">自由（例：sp_top.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat">【ロゴ】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>headerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>footerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">footer_logo.png</td></tr>
+      </table>
+      <p class="ts-note">↑footerはheaderの流用（背景と同化しないように）</p>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【認証画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証画像</td><td>PC</td><td class="size">1920×670px</td><td class="file">pc_index.jpg</td></tr>
+        <tr><td>認証画像</td><td>SP</td><td class="size">850×850px</td><td class="file">sp_index.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【背景画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>背景画像</td><td>PC</td><td class="size">1920×1080px</td><td class="file">bg.jpg</td></tr>
+        <tr><td>背景画像</td><td>SP</td><td class="size">1206×2622px</td><td class="file">bg_sp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【SPフルビジュアル】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>SPフルビジュアル</td><td>SP</td><td class="size">750×1400px</td><td class="file">自由（例：sp_top.jpg）／認証設置の場合：sp_index.jpg</td></tr>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- ナイトワーク版                    -->
+  <!-- ================================ -->
+  <div id="nightwork" class="ts-section is-hidden">
+    <h3>◆ ナイトワーク版テンプレート</h3>
+
+    <div id="block-nt-h1" class="ts-block is-hidden">
+      <h4>【ナイトワーク版】H1テンプレート各種サイズ</h4>
+
+      <div class="ts-templates">
+        <strong>対象テンプレート（H1）</strong>
+        <ul>
+          <li>H1-NTホワイト01</li>
+          <li>H1-NTブラック01</li>
+          <li>H1-NTパープル01</li>
+          <li>H1-NTピンク01</li>
+          <li>H1-NTレッド01</li>
+          <li>H1-NTブルー01</li>
+          <li>H1-NTパープル02</li>
+          <li>H1-NTエメラルドブルー01</li>
+          <li>H1-NTピンク02</li>
+          <li>H1-NTゴールド01</li>
+        </ul>
+      </div>
+
+      <p class="ts-cat">【特大画像】 ※設置場所は「特大バナー編集」</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>特大画像</td><td>PC</td><td class="size">1920×800px</td><td class="file">自由（例：pc_top.jpg）</td></tr>
+        <tr><td>特大画像</td><td>SP</td><td class="size">750×550px</td><td class="file">自由（例：sp_top.jpg）</td></tr>
+      </table>
+
+      <p class="ts-cat">【ロゴ】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>headerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">header_logo.png</td></tr>
+        <tr><td>footerロゴ</td><td>共通</td><td class="size">800×400px</td><td class="file">footer_logo.png</td></tr>
+      </table>
+      <p class="ts-note">↑footerはheaderの流用（背景と同化しないように）</p>
+
+      <p class="ts-cat">【その他】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>ファビコン</td><td>―</td><td class="size">180×180px</td><td class="file">favicon.ico（拡張子をicoに変更）</td></tr>
+        <tr><td>WEBクリップアイコン</td><td>―</td><td class="size">180×180px</td><td class="file">dIcon.png</td></tr>
+        <tr><td>OGP</td><td>―</td><td class="size">1200×630px</td><td class="file">ogp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【認証画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>認証画像</td><td>PC</td><td class="size">1920×670px</td><td class="file">bg_index.jpg</td></tr>
+        <tr><td>認証画像</td><td>SP</td><td class="size">850×850px</td><td class="file">sp_bg.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【背景画像】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>背景画像</td><td>PC</td><td class="size">1920×1080px</td><td class="file">bg.jpg</td></tr>
+        <tr><td>背景画像</td><td>SP</td><td class="size">1206×2622px</td><td class="file">bg_sp.jpg</td></tr>
+      </table>
+
+      <p class="ts-cat paid">【SPフルビジュアル】</p>
+      <table class="ts-table">
+        <colgroup>
+          <col class="col-label"><col class="col-device"><col class="col-size"><col class="col-file">
+        </colgroup>
+        <tr><th>項目</th><th>端末</th><th>サイズ</th><th>ファイル名</th></tr>
+        <tr><td>SPフルビジュアル</td><td>SP</td><td class="size">750×1400px</td><td class="file">自由（例：sp_top.jpg）／認証設置の場合：sp_index.jpg</td></tr>
+      </table>
+
+    </div>
+  </div>
+
+  </div><!-- /#ts-content -->
+
+  <!-- 共通補足 -->
+  <div class="ts-supplement">
+    <strong>■ 用語補足</strong><br>
+    <strong>ファビコン（Favicon）</strong>：ブラウザのタブやブックマークなどに表示される、Webサイトのシンボルマーク。<br>
+    <strong>WEBクリップアイコン（Web Clip Icon）</strong>：スマホ（特にiPhoneやiPad）で、サイトをホーム画面に追加したときに表示されるショートカットアイコン。<br>
+    <strong>OGP</strong>：SNS（X / Facebook / LINEなど）で、URLを共有したときに表示されるサムネイル画像。
+  </div>
+
+</section>
+
+<section class="contact-box">
+  <h2>お問い合わせ</h2>
+  <p class="tel"><a href="tel:0570-666-091">0570-666-091</a></p>
+  <p>担当直通：<a href="tel:080-9815-6852">080-9815-6852</a></p>
+  <p class="time">受付時間：平日 11:00～19:00（土日祝休）</p>
+  <p style="margin-top:12px;font-size:12px;"><a href="https://votec.jp" target="_blank">https://votec.jp</a></p>
+</section>
+
+<script>
+(function () {
+  var searchInput = document.getElementById('ts-search');
+  var suggestList = document.getElementById('ts-suggest');
+  var dropdownRow = document.getElementById('ts-dropdown-row');
+  var templateSelect = document.getElementById('ts-template-select');
+  var orDivider = document.getElementById('ts-or-divider');
+  var emptyMsg = document.getElementById('ts-empty');
+  var selectedName = document.getElementById('ts-selected-name');
+  var categoryBtns = document.querySelectorAll('.ts-category-btns button');
+  var sections = document.querySelectorAll('.ts-section');
+  var blocks = document.querySelectorAll('.ts-block');
+  var templates = [];
+  var activeCategory = '';
+  var activeIndex = -1;
+
+  blocks.forEach(function (block) {
+    var section = block.closest('.ts-section');
+    var sectionId = section.id;
+    var sectionLabel = section.querySelector('h3').textContent.replace(/^◆\s*/, '');
+
+    block.querySelectorAll('.ts-templates li').forEach(function (li) {
+      templates.push({
+        name: li.textContent.trim(),
+        blockId: block.id,
+        sectionId: sectionId,
+        sectionLabel: sectionLabel
+      });
+    });
+  });
+
+  templates.sort(function (a, b) {
+    return a.name.localeCompare(b.name, 'ja');
+  });
+
+  function normalize(str) {
+    return str.toLowerCase().replace(/[\s　&＆]/g, '');
+  }
+
+  function highlight(text, query) {
+    if (!query) return text;
+    var idx = normalize(text).indexOf(normalize(query));
+    if (idx === -1) return text;
+    return text.slice(0, idx) + '<mark>' + text.slice(idx, idx + query.length) + '</mark>' + text.slice(idx + query.length);
+  }
+
+  function getFiltered(query) {
+    var q = normalize(query);
+    return templates.filter(function (t) {
+      if (activeCategory && t.sectionId !== activeCategory) return false;
+      if (!q) return true;
+      return normalize(t.name).indexOf(q) !== -1;
+    });
+  }
+
+  function rebuildDropdown() {
+    templateSelect.innerHTML = '<option value="">-- テンプレートを選択 --</option>';
+
+    if (!activeCategory) {
+      dropdownRow.classList.add('is-hidden');
+      orDivider.classList.add('is-hidden');
+      return;
+    }
+
+    dropdownRow.classList.remove('is-hidden');
+    orDivider.classList.remove('is-hidden');
+
+    templates.filter(function (t) {
+      return t.sectionId === activeCategory;
+    }).forEach(function (item) {
+      var option = document.createElement('option');
+      option.value = item.name;
+      option.textContent = item.name;
+      templateSelect.appendChild(option);
+    });
+  }
+
+  function showBlock(blockId, templateName) {
+    sections.forEach(function (s) { s.classList.add('is-hidden'); });
+    blocks.forEach(function (b) { b.classList.add('is-hidden'); });
+
+    if (!blockId) {
+      emptyMsg.style.display = 'block';
+      selectedName.style.display = 'none';
+      return;
+    }
+
+    var block = document.getElementById(blockId);
+    if (!block) return;
+
+    block.closest('.ts-section').classList.remove('is-hidden');
+    block.classList.remove('is-hidden');
+    emptyMsg.style.display = 'none';
+    selectedName.style.display = 'block';
+    selectedName.querySelector('strong').textContent = templateName;
+    block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selectTemplate(item) {
+    searchInput.value = item.name;
+    if (activeCategory === item.sectionId) {
+      templateSelect.value = item.name;
+    }
+    closeSuggest();
+    showBlock(item.blockId, item.name);
+  }
+
+  function renderSuggest(items, query) {
+    suggestList.innerHTML = '';
+    activeIndex = -1;
+
+    if (!query && !activeCategory) {
+      closeSuggest();
+      return;
+    }
+
+    if (items.length === 0) {
+      suggestList.innerHTML = '<li class="ts-suggest-empty">該当するテンプレートがありません</li>';
+      suggestList.classList.add('is-open');
+      return;
+    }
+
+    var limit = (!query && activeCategory) ? items.length : 20;
+    items.slice(0, limit).forEach(function (item) {
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="ts-suggest-cat">' + item.sectionLabel + '</span>' + highlight(item.name, query);
+      li.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        selectTemplate(item);
+      });
+      suggestList.appendChild(li);
+    });
+
+    if (items.length > limit) {
+      var more = document.createElement('li');
+      more.className = 'ts-suggest-empty';
+      more.textContent = '他 ' + (items.length - limit) + ' 件 — キーワードを追加して絞り込んでください';
+      suggestList.appendChild(more);
+    }
+
+    suggestList.classList.add('is-open');
+  }
+
+  function closeSuggest() {
+    suggestList.classList.remove('is-open');
+    activeIndex = -1;
+  }
+
+  function updateActiveItem() {
+    var items = suggestList.querySelectorAll('li:not(.ts-suggest-empty)');
+    items.forEach(function (li, i) {
+      li.classList.toggle('is-active', i === activeIndex);
+    });
+    if (activeIndex >= 0 && items[activeIndex]) {
+      items[activeIndex].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  searchInput.addEventListener('input', function () {
+    renderSuggest(getFiltered(this.value.trim()), this.value.trim());
+  });
+
+  searchInput.addEventListener('focus', function () {
+    renderSuggest(getFiltered(this.value.trim()), this.value.trim());
+  });
+
+  searchInput.addEventListener('keydown', function (e) {
+    var items = getFiltered(this.value.trim());
+    var visible = suggestList.querySelectorAll('li:not(.ts-suggest-empty)');
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (visible.length) {
+        activeIndex = Math.min(activeIndex + 1, visible.length - 1);
+        updateActiveItem();
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (visible.length) {
+        activeIndex = Math.max(activeIndex - 1, 0);
+        updateActiveItem();
+      }
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (activeIndex >= 0 && items[activeIndex]) {
+        selectTemplate(items[activeIndex]);
+      } else if (items.length === 1) {
+        selectTemplate(items[0]);
+      } else if (items.length > 0) {
+        selectTemplate(items[0]);
+      }
+    } else if (e.key === 'Escape') {
+      closeSuggest();
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.ts-search-wrap')) closeSuggest();
+  });
+
+  templateSelect.addEventListener('change', function () {
+    if (!this.value) {
+      searchInput.value = '';
+      showBlock(null);
+      return;
+    }
+    var found = templates.find(function (t) {
+      return t.name === templateSelect.value && t.sectionId === activeCategory;
+    });
+    if (found) selectTemplate(found);
+  });
+
+  categoryBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      categoryBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeCategory = btn.dataset.category;
+      searchInput.value = '';
+      templateSelect.value = '';
+      showBlock(null);
+      rebuildDropdown();
+      if (activeCategory) {
+        templateSelect.focus();
+      } else {
+        closeSuggest();
+      }
+    });
+  });
+
+  var params = new URLSearchParams(window.location.search);
+  var preset = params.get('template');
+  if (preset) {
+    var found = templates.find(function (t) { return t.name === preset; });
+    if (found) {
+      categoryBtns.forEach(function (b) {
+        b.classList.toggle('active', b.dataset.category === found.sectionId);
+      });
+      activeCategory = found.sectionId;
+      rebuildDropdown();
+      selectTemplate(found);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

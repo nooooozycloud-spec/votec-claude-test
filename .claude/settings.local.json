@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where node:*)",
+      "Bash(where npx:*)",
+      "Bash(where python3:*)",
+      "Bash(where py:*)",
+      "Bash(py --version)",
+      "Bash(py -3 --version)",
+      "Read(//usr/**)",
+      "Read(//usr/local/**)",
+      "Read(//c/Users/noooo/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/52a47522-e584-4dfd-a1c3-750ee4660f8c/8b2c27fa-72b3-462c-9a47-1982eb28cbb0/skills/xlsx/**)",
+      "Bash(python3 -)",
+      "Read(//mingw64/**)",
+      "Bash(ls /c/Python*/python.exe)",
+      "Read(//c/Users/noooo/AppData/Local/Programs/**)",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(node -e ' *)",
+      "WebFetch(domain:votec.jp)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__get_page_text"
+    ]
+  }
+}
